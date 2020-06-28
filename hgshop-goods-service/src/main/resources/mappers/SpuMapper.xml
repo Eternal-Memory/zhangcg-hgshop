@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zcg.hgshop.dao.SpuDao">
+	<resultMap type="spu" id="SpuMap">
+		<id column="id" property="id"/>
+		<association property="category" column="category_id" select="com.zcg.hgshop.dao.CategoryDao.findById"></association>
+		<association property="brand" column="brand_id" select="com.zcg.hgshop.dao.BrandDao.findById"></association>
+	</resultMap>
+	
+	<select id="selects" resultType="SpuVO">
+		select * from hg_spu
+		<where>
+			<if test="brandId!=0">
+			  and brand_id=#{brandId}
+			</if>
+			<if test="categoryId!=0">
+				and category_id=#{categoryId}
+			</if>
+			<if test="key!=null and key!=''">
+				and (goods_name like concat('%',#{key},'%') or caption like concat('%',#{key},'%'))
+			</if>
+		</where>
+		<if test="orderColumn!=null and orderColumn!=''">
+			order by ${orderColumn}
+			<if test="orderType='ASC' or orderType='DESC'">
+				${orderType}
+			</if>
+		</if>
+	</select>
+	
+	
+	<insert id="insert">
+	insert into hg_spu(goods_name,is_marktable,brand_id,caption,category_id,small_pic) 
+	values(#{goodsName},#{isMarktable},#{brandId},#{caption},#{categoryId},#{smallPic})
+	</insert>
+	
+	<update id="update">
+		update hg_spu set goods_name#{goodsName},is_marktable=#{isMarktable},brand_id=#{brandId},
+		caption=#{caption},category_id=#{categoryId},small_pic=#{smallPic} where id=#{id}
+	</update>
+	
+	<delete id="delete">
+	delete from hg_spu where id in 
+	<foreach collection="array" item="ids" open="(" close=")" separator=",">
+	#{ids}
+	</foreach>
+	</delete>
+</mapper>
