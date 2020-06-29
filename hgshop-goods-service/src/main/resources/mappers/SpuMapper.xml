@@ -7,7 +7,7 @@
 		<association property="brand" column="brand_id" select="com.zcg.hgshop.dao.BrandDao.findById"></association>
 	</resultMap>
 	
-	<select id="selects" resultType="SpuVO">
+	<select id="selects" resultMap="SpuMap">
 		select * from hg_spu
 		<where>
 			<if test="brandId!=0">
@@ -28,14 +28,17 @@
 		</if>
 	</select>
 	
+	<select id="getById" resultMap="SpuMap">
+		select * from hg_spu where id=#{value}
+	</select>
 	
-	<insert id="insert">
-	insert into hg_spu(goods_name,is_marktable,brand_id,caption,category_id,small_pic) 
-	values(#{goodsName},#{isMarktable},#{brandId},#{caption},#{categoryId},#{smallPic})
+	<insert id="add">
+	insert into hg_spu(goods_name,is_marketable,brand_id,caption,category_id,small_pic) 
+	values(#{goodsName},#{isMarketable},#{brandId},#{caption},#{categoryId},#{smallPic})
 	</insert>
 	
 	<update id="update">
-		update hg_spu set goods_name#{goodsName},is_marktable=#{isMarktable},brand_id=#{brandId},
+		update hg_spu set goods_name=#{goodsName},is_marketable=#{isMarketable},brand_id=#{brandId},
 		caption=#{caption},category_id=#{categoryId},small_pic=#{smallPic} where id=#{id}
 	</update>
 	

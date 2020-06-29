@@ -1,6 +1,7 @@
 package com.zcg.hgshop.domain;
 
 import java.io.Serializable;
+
 /**
  * 分类实体
  * @author hp

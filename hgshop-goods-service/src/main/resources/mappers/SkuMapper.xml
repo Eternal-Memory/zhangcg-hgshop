@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zcg.hgshop.dao.SkuDao">
+	<resultMap type="sku" id="SkuMap">
+		<id column="id" property="id"/>
+		<association property="spu" column="spu_id" select="com.zcg.hgshop.dao.SpuDao.getById"></association>
+	</resultMap>
+	
+	<select id="selects" resultMap="SkuMap">
+		select * from hg_sku
+		<where>
+			<if test="key!=null and key!=''">
+				and concat(title,sell_point) like "%"#{key}"%"
+			</if>
+			<!-- and (title like concat('%'#{key}'%') or sell_point like concat('%'#{key}'%')) -->
+			<if test="minPrice!=null and minPrice!=0">
+				and price &gt;=#{minPrice}
+			</if>
+			<if test="maxPrice!=null and maxPrice!=0">
+				and price &lt;=#{maxPrice}
+			</if>
+			
+		</where>
+		order by id DESC
+	</select>
+	
+	<insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+	insert into hg_sku(title,sell_point,price,stock_count,barcode,image,status,create_time,update_time,cost_price,market_price,spu_id,cart_thumbnail)
+	values(#{title},#{sellPoint},#{price},#{stockCount},#{barcode},#{image},#{status},now(),now(),#{costPrice},#{marketPrice},#{spuId},#{cartThumbnail})
+	</insert>
+	<insert id="insertSpecOption">
+		insert into hg_sku_spec(sku_id,spec_id,spec_option_id)
+		values(#{skuId},#{opt.specId},#{opt.id})
+	</insert>
+	
+	<delete id="delete">
+		delete from hg_sku where id in
+		<foreach collection="array" item="ids" open="(" close=")" separator=",">
+			#{ids}
+		</foreach>
+	</delete>
+	<delete id="deleteSpecOPtion">
+		delete from hg_sku_spc where sku_id =#{id}
+	</delete>
+	
+	<update id="update">
+		update hg_sku set title=#{title},sell_point=#{sellPoint},price=#{price},stock_count=#{stockCount},barcode=#{barcode},
+		image=#{image},status=#{status},create_time=#{createTime},update_time=#{updateTime},cost_price=#{costPrice},market_price=#{marketPrice},spu_id=#{spuId},cart_thumbnail=#{cartThumbnail}
+		where id=#{id}
+	</update>
+</mapper>

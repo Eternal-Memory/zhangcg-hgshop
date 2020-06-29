@@ -1,7 +1,11 @@
 package com.zcg.hgshop.domain;
 
 import java.io.Serializable;
-
+/**
+ * 规格属性值实体类
+ * @author hp
+ *
+ */
 public class SpecOption implements Serializable{
 
 	private static final long serialVersionUID = 1L;
