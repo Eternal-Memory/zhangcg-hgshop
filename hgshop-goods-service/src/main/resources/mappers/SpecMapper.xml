@@ -41,4 +41,8 @@
 	<select id="getSpecById" resultMap="specMap">
 	select * from hg_spec where id=#{id}
 	</select>
+	
+	<select id="listOptionByskuId" resultType="SpecOption">
+		select spec_option_id as id,spec_id as specId from hg_sku_spec where sku_id=#{value}
+	</select>
 </mapper>

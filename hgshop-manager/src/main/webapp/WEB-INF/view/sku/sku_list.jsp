@@ -54,8 +54,8 @@
 	 				<td>${sku.price}</td>
 	 				<td><img src="/pic/${sku.image}" width="40" height="40"></td>
 	 				<td>
-	 					<button type="button" class="btn btn-danger btn-sm" onclick="del(${spu.id})">删除</button>
-						<button type="button" class="btn btn-primary btn-sm" onclick="toUpdate(${spu.id})">修改</button>
+	 					<button type="button" class="btn btn-danger btn-sm" onclick="delete1(${sku.id})">删除</button>
+						<button type="button" class="btn btn-primary btn-sm" onclick="toUpdate(${sku.id})">修改</button>
 	 				</td>
 	 			</tr>
 	 		</c:forEach>
@@ -78,7 +78,25 @@
 		var query = $("#form1").serialize();
 		$("#workContent").load('./sku/selects',query);
 	}
+	
+	//跳转到修改页面
+	function toUpdate(skuId){
+		$("#workContent").load('./sku/toUpdate',{skuId:skuId});
+	}
 
-
+	//删除
+	function delete1(id){
+		if(confirm("确定要删除吗")){
+			$.post("/sku/delete",{ids:id},function(msg){
+				if(Number(msg)>0){
+					alert("删除成功");
+					query("${info.pageNum}");
+				}else{
+					alert("删除失败");
+				}
+			})
+		}
+		
+	}
 </script>
 </html>

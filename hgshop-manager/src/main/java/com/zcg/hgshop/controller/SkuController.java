@@ -63,6 +63,31 @@ public class SkuController {
 		return "sku/sku_add";
 	}
 	
+	/**
+	 * 跳转到修改页面
+	 * @param model
+	 * @param spuId
+	 * @return
+	 */
+	@RequestMapping("toUpdate")
+	public String toUpdate(Model model,int skuId) {
+		//查询sku
+		Sku sku = skuService.getById(skuId);
+		model.addAttribute("sku", sku);
+		//获取规格
+		PageInfo<Spec> info = specService.selects(null, 1, 5);
+		model.addAttribute("info", info);
+		
+		return "sku/sku_update";
+	}
+	
+	/**
+	  *  添加
+	 * @param sku
+	 * @param imageFile
+	 * @param cartThumbnailFile
+	 * @return
+	 */
 	@RequestMapping("insert")
 	@ResponseBody
 	public int insert(Sku sku,@RequestParam("imageFile") MultipartFile imageFile,
@@ -82,10 +107,52 @@ public class SkuController {
 		return i;
 	}
 	
+	/**
+	  *  修改sku
+	 * @param sku
+	 * @param imageFile
+	 * @param cartThumbnailFile
+	 * @return
+	 */
+	@RequestMapping("update")
+	@ResponseBody
+	public int update(Sku sku,@RequestParam("imageFile") MultipartFile imageFile,
+			@RequestParam("cartThumbnailFile") MultipartFile cartThumbnailFile) {
+		List<SpecOption> list = sku.getOptions();
+		for (int i = list.size()-1; i >=0; i--) {
+			SpecOption option = list.get(i);
+			if(0==option.getSpecId()) {
+				list.remove(i);
+			}
+		}
+		String upload = hgFileUtils.upload(imageFile);
+		String upload1 = hgFileUtils.upload(cartThumbnailFile);
+		sku.setImage(upload);
+		sku.setCartThumbnail(upload1);
+		int i = skuService.update(sku);
+		return i;
+	}
+	
+	/**
+	 * 查询规格属性
+	 * @param specId
+	 * @return
+	 */
 	@RequestMapping("getSpecOptions")
 	@ResponseBody
 	public List<SpecOption> getSpecOptions(int specId){
 		Spec spec = specService.getSpecById(specId);
 		return spec.getOptions();
+	}
+	/**
+	 * 删除sku
+	 * @param ids
+	 * @return
+	 */
+	@RequestMapping("delete")
+	@ResponseBody
+	public int delete(int[] ids) {
+		int i = skuService.delete(ids);
+		return i;
 	}
 }
