@@ -1,0 +1,36 @@
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!-- <context:property-placeholder location="classpath:hgshop.properties" /> -->
+	
+	<!-- 应用程序 -->
+	<dubbo:application name="hgshop-goods-service" >
+		<!-- 解决22222端口  22222端口为了防止网络扰动 -->
+		<dubbo:parameter key="qos.enable" value="false"/>
+	</dubbo:application>
+	
+	<!-- 注册中心 采用zookeeper 必须修改  -->
+	<dubbo:registry
+		address="zookeeper://192.168.80.129:2181" /> 
+	<!-- 直连 -->
+	<!-- <dubbo:registry address="N/A" /> -->
+	
+	<!-- 通讯协议 必须修改  这个端口不能冲突 -->
+	<dubbo:protocol name="dubbo" port="20882" />
+	
+	<!-- 注解扫描配置 指定了扫描的包   必须修改  -->
+	<dubbo:annotation
+		package="com.zcg.hgshop.service.impl"/>
+		
+</beans>
