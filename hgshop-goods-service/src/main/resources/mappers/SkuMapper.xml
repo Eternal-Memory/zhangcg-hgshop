@@ -8,6 +8,10 @@
 	<resultMap type="sku" id="SkuMapDetail" extends="SkuMap">
 		<collection property="options" column="id" select="com.zcg.hgshop.dao.SpecDao.listOptionByskuId"></collection>
 	</resultMap>
+	<!-- 继承即可 要求能够获取规格名称和属性值的名称 -->
+	<resultMap type="sku" id="SkuMapDetail2" extends="SkuMap">
+		<collection property="options" column="id" select="com.zcg.hgshop.dao.SpecDao.listOptionByskuId2"></collection>
+	</resultMap>
 	
 	<select id="selects" resultMap="SkuMap">
 		select * from hg_sku
@@ -55,4 +59,9 @@
 		image=#{image},status=#{status},create_time=#{createTime},update_time=#{updateTime},cost_price=#{costPrice},market_price=#{marketPrice},spu_id=#{spuId},cart_thumbnail=#{cartThumbnail}
 		where id=#{id}
 	</update>
+	
+	<select id="listBySpuId" resultMap="SkuMapDetail2">
+		SELECT * FROM hg_sku WHERE spu_id=#{value}
+	</select>
+	
 </mapper>

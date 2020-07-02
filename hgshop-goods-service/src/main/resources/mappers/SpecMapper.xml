@@ -45,4 +45,11 @@
 	<select id="listOptionByskuId" resultType="SpecOption">
 		select spec_option_id as id,spec_id as specId from hg_sku_spec where sku_id=#{value}
 	</select>
+	
+	<select id="listOptionByskuId2" resultType="SpecOption">
+		SELECT spec_option_id AS id ,ks.spec_id as specId, s.spec_name as specName , o.option_name as optionName  from hg_sku_spec ks 
+		        LEFT JOIN hg_spec s on ks.spec_id=s.id 
+                LEFT JOIN hg_spec_option o  on ks.spec_option_id=o.id
+                WHERE ks.sku_id=#{value}
+	</select>
 </mapper>

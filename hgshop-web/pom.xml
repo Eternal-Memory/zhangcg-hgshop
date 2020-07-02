@@ -143,11 +143,16 @@
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-redis</artifactId>
 		</dependency>
-
+		
 
 		<dependency>
 			<groupId>com.zhangchenguang.hgshop</groupId>
 			<artifactId>hgshop-goods-interface</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.zhangchenguang.hgshop</groupId>
+			<artifactId>hgshop-user-interface</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
   </dependencies>
@@ -173,7 +178,7 @@
 							<!-- 虚拟路径 -->
 							<contextPath>/pic</contextPath>
 							<!-- 物理路径 -->
-							<resourceBase>d:/pic/</resourceBase>
+							<resourceBase>f:/pic/</resourceBase>
 						</jettyWebAppContext>
 					</contextHandlers>
 					<scanIntervalSeconds>1</scanIntervalSeconds>

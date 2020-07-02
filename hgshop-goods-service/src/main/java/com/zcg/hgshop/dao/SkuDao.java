@@ -19,4 +19,5 @@ public interface SkuDao {
 	List<Sku> selects(SkuVO skuVO);
 	
 	Sku getById(int id);
+	List<Sku> listBySpuId(int spuId);
 }

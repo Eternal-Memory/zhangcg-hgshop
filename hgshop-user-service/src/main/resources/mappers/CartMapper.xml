@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zcg.hgshop.dao.CartDao">
+	<resultMap type="Cart" id="CartMap">
+		<id column="id" property="id" />
+		<association property="sku" column="skuid"
+			select="getSkuById"></association>
+
+	</resultMap>
+
+	<select id="getSkuById" resultType="Sku">
+		select id,title,price,cart_thumbnail from hg_sku where id=#{id}
+	</select>
+
+	<insert id="insert" useGeneratedKeys="true" keyColumn="id"
+		keyProperty="id">
+		insert into hg_cart(uid,skuid,pnum,createtime,updatetime)
+		values(#{uid},#{skuid},#{pnum},now(),now())
+	</insert>
+
+	<select id="selects" resultMap="CartMap">
+		select * from hg_cart where
+		uid=#{value}
+	</select>
+
+	<select id="getByIds" resultMap="CartMap">
+		select * from hg_cart where id in
+		<foreach collection="array" open="(" close=")" item="ids"
+			separator=",">
+			#{ids}
+		</foreach>
+	</select>
+
+	<delete id="delete">
+		delete from hg_cart where id in
+		<foreach collection="array" item="ids" open="(" close=")"
+			separator=",">
+			#{ids}
+		</foreach>
+	</delete>
+</mapper>

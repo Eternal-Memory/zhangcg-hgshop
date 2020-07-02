@@ -14,6 +14,14 @@ public class SpecOption implements Serializable{
 	private String optionName;
 	private int specId;
 	private int orders;
+	private String specName;
+	
+	public String getSpecName() {
+		return specName;
+	}
+	public void setSpecName(String specName) {
+		this.specName = specName;
+	}
 	public int getId() {
 		return id;
 	}

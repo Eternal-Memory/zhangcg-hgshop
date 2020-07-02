@@ -80,4 +80,11 @@ public class SkuServiceImpl implements SkuService{
 		return sku;
 	}
 
+	@Override
+	public List<Sku> listsDetailBySpu(int spuId) {
+		// TODO Auto-generated method stub
+		List<Sku> list = skuDao.listBySpuId(spuId);
+		return list;
+	}
+
 }
