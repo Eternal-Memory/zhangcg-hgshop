@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zcg.hgshop.dao.OrderDao">
+	<insert id="insert" useGeneratedKeys="true" keyColumn="oid" keyProperty="oid">
+		INSERT INTO hg_orders(uid,sumtotal,address,create_time)
+			VALUES(#{uid},#{sumtotal},#{address},NOW())
+	</insert>
+	
+	<insert id="insertDetail">
+		INSERT INTO hg_ordersdetail(skuid,total,oid,pnum)
+			VALUES(#{skuid},#{total},#{oid},#{pnum})
+	</insert>
+	
+	<select id="selects" resultType="Orderz">
+		SELECT * FROM hg_orders 
+			WHERE uid=#{value} ORDER BY create_time desc
+	</select>
+	
+	<select id="selectDetail" resultType="OrderDetail">
+		SELECT * FROM hg_ordersdetail 
+			WHERE oid=#{value} ORDER BY id desc
+	</select>
+</mapper>

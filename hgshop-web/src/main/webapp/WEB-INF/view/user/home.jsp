@@ -57,7 +57,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0)" toggle-data='/spec/list'>
+            <a class="nav-link" href="javascript:void(0)" toggle-data='/user/orderlist?page=1'>
               	订单
             </a>
           </li>

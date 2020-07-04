@@ -10,9 +10,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 </settings>
 
 <!-- 别名配置  必须修改-->
- <typeAliases>
+ <!-- <typeAliases>
    <package name="com.zcg.hgshop.domain"/>
- </typeAliases>
+ </typeAliases> -->
 
  
  <!-- 配置分页助手拦截器 -->

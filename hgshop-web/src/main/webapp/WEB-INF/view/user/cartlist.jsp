@@ -89,7 +89,27 @@
 		}
 	}
 	
-	
+	function createOrder(){
+		var ids=$(".c1:checked").map(function(){
+			return $(this).val();
+		}).get().join();
+		if(ids==null){
+			alert("请选择一条数据");
+			return ;
+		}
+		alert($("#address").val());
+		// 生成订单
+		$.post("/user/createOrder",{cartIds:ids,address:$("#address").val()},function(msg){
+			if(msg.errorCode===0){
+				alert('购物成功，请及时支付')
+				//刷新
+				$("#workContent").load('/user/catList');
+			}else{
+				alert(data.errorInfo)
+			}
+			
+		})
+	}
 
 </script>	
 </body>

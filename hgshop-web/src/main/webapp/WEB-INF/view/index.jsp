@@ -59,10 +59,10 @@
 				<li class="nav-item"><a class="nav-link disabled" href="#"
 					tabindex="-1" aria-disabled="true">Disabled</a></li>
 			</ul>
-			<form class="form-inline my-2 my-lg-0">
+			<form class="form-inline my-2 my-lg-0" action="./query">
 				<input class="form-control mr-sm-2" type="search"
-					placeholder="Search" aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+					placeholder="Search" name="key" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
 			</form>
 		</div>
 	</nav>

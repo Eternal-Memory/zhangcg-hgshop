@@ -16,8 +16,9 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 	<!-- 必须修改   -->
-	 <!-- <import resource="classpath:applicationContext-elasticSearch.xml"/> -->
+	<import resource="classpath:application-es.xml"/>
 	<!-- <import resource="classpath:applicationContext-kafka-consumer.xml"/>  -->
+	<import resource="classpath:redis-context.xml"/>
 	<!-- 扫描器   必须修改 -->
 	<context:component-scan
 		base-package="com.zcg.hgshop.controller" />
