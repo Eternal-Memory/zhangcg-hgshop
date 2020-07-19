@@ -7,9 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/resource/css/bootstrap.min.css" rel="stylesheet">
-<script type="text/javascript" src="/resource/js/jquery-3.2.1.js"></script>
-<script type="text/javascript" src="/resource/js/bootstrap.min.js"></script>
+<link href="${pageContext.request.contextPath }/resource/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="${pageContext.request.contextPath }/resource/js/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resource/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="container-fluid">
@@ -45,7 +45,7 @@ function showDetail(trobj,oid){
 		$(this).remove()
 	})
 	
-	 $.post('/user/orderDetails',{oid:oid},function(htmlData){
+	 $.post('./orderDetails',{oid:oid},function(htmlData){
 		trobj.after(htmlData)	
 	}) 
 }

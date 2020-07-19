@@ -49,12 +49,14 @@ public class UserController {
 	 * @return
 	 */
 	@PostMapping("login")
-	public String login(HttpSession session,User user) {
+	public String login(Model model,HttpSession session,User user) {
 		User u = userService.login(user);
 		if(u==null) {
 			return "user/login";
 		}
+		String name = u.getName();
 		session.setAttribute("user", u);
+		model.addAttribute("name", name);
 		return "redirect:home";
 	}
 	
@@ -86,7 +88,10 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping("home")
-	public String home() {
+	public String home(Model model,HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		String name = user.getName();
+		model.addAttribute("name", name);
 		return "user/home";
 	}
 	/**

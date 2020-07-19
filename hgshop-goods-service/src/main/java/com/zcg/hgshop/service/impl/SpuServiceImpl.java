@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.zcg.hgshop.dao.SpuDao;
@@ -15,10 +17,19 @@ import com.zcg.hgshop.service.SpuService;
 public class SpuServiceImpl implements SpuService{
 	@Autowired
 	SpuDao spuDao;
+	@Autowired
+	KafkaTemplate<String, String> kafkaTemplate;
+	
 	
 	@Override
 	public int add(Spu spu) {
 		int i = spuDao.add(spu);
+		if(i>0) {
+			int spuId = spu.getId();
+			Spu spu2 = spuDao.getById(spuId);
+			String spujson = JSON.toJSONString(spu2);
+			kafkaTemplate.send("hgspu", "addspu", spujson);
+		}
 		return i;
 	}
 
@@ -31,6 +42,10 @@ public class SpuServiceImpl implements SpuService{
 	@Override
 	public int delete(int[] ids) {
 		int i = spuDao.delete(ids);
+		if(i>0) {
+			String delIdsStr = JSON.toJSONString(ids);
+			kafkaTemplate.send("hgspu", "delspu",delIdsStr);
+		}
 		return i;
 	}
 

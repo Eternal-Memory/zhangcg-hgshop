@@ -17,7 +17,7 @@
 
 	<!-- 必须修改   -->
 	<import resource="classpath:application-es.xml"/>
-	<!-- <import resource="classpath:applicationContext-kafka-consumer.xml"/>  -->
+	<import resource="classpath:applicationContext-kafka-consumer.xml"/> 
 	<import resource="classpath:redis-context.xml"/>
 	<!-- 扫描器   必须修改 -->
 	<context:component-scan

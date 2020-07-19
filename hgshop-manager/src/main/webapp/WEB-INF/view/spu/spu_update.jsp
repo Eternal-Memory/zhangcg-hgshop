@@ -7,12 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/resource/css/bootstrap.min.css" rel="stylesheet">
-<link href="/resource/bootstrap4/css/bootstrap.css" rel="stylesheet" >
-<link href="/resource/bootstrap-treeview/css/bootstrap-treeview.css" rel="stylesheet">
-<script type="text/javascript" src="/resource/js/jquery-3.2.1.js"></script>
-<script type="text/javascript" src="/resource/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/resource/bootstrap-treeview/js/bootstrap-treeview.js"></script>
+<link href="${pageContext.request.contextPath }/resource/css/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resource/bootstrap4/css/bootstrap.css" rel="stylesheet" >
+<link href="${pageContext.request.contextPath }/resource/bootstrap-treeview/css/bootstrap-treeview.css" rel="stylesheet">
+<script type="text/javascript" src="${pageContext.request.contextPath }/resource/js/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resource/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resource/bootstrap-treeview/js/bootstrap-treeview.js"></script>
 </head>
 <body>
 <div class="container-fluid">
@@ -111,14 +111,14 @@
 		var formData=new FormData($("#form1")[0]);
 		$.ajax({
 			type:"post",
-			url:"/spu/update",
+			url:"./spu/update",
 			contentType:false,
 			processData:false,
 			data:formData,
 			success:function(msg){
 				if(Number(msg)>0){
 					alert("修改成功");
-					$("#workContent").load('/spu/selects');
+					$("#workContent").load('./spu/selects');
 				}else{
 					alert("修改失败");
 				}

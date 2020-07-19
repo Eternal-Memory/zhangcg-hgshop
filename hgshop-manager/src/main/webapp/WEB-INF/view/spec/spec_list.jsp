@@ -7,9 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/resource/css/bootstrap.min.css" rel="stylesheet">
-<script type="text/javascript" src="/resource/js/jquery-3.2.1.js"></script>
-<script type="text/javascript" src="/resource/js/bootstrap.min.js"></script>
+<link href="${pageContext.request.contextPath }/resource/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="${pageContext.request.contextPath }/resource/js/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resource/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div>
@@ -45,7 +45,7 @@
 </body>
 <script type="text/javascript">
 	function goPage(pageNum){
-		$("#workContent").load('/spec/selects?pageNum='+pageNum);
+		$("#workContent").load('./spec/selects?pageNum='+pageNum);
 	}
 
 	function qx(){
@@ -55,11 +55,11 @@
 	}
 	
 	function add(){
-		$("#workContent").load('/spec/add');
+		$("#workContent").load('./spec/add');
 	}
 	
 	function toUpdate(id){
-		$("#workContent").load('/spec/toUpdate?id='+id);
+		$("#workContent").load('./spec/toUpdate?id='+id);
 	}
 	
 	function removeAll(){
@@ -75,10 +75,10 @@
 		if(!re){
 			return;
 		}
-		$.post("/spec/delete",{ids:ids},function(msg){
+		$.post("./spec/delete",{ids:ids},function(msg){
 			if(Number(msg)>0){
 				alert("删除成功");
-				$("#workContent").load('/spec/selects');
+				$("#workContent").load('./spec/selects');
 			}else{
 				alert("删除失败");
 			}
@@ -90,10 +90,10 @@
 		if(!re){
 			return;
 		}
-		$.post("/spec/delete",{ids:id},function(msg){
+		$.post("./spec/delete",{ids:id},function(msg){
 			if(Number(msg)>0){
 				alert("删除成功");
-				$("#workContent").load('/spec/selects');
+				$("#workContent").load('./spec/selects');
 			}else{
 				alert("删除失败");
 			}

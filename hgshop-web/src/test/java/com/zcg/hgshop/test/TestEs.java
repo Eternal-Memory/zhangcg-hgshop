@@ -27,7 +27,7 @@ public class TestEs {
 	@Test
 	public void test() {
 		SpuVO spuVO = new SpuVO();
-		spuVO.setPageSize(100);
+		spuVO.setPageSize(300);
 		PageInfo<Spu> info = spuService.selects(spuVO);
 		info.getList().forEach(spu->{
 			EsSpu esSpu = new EsSpu(spu);

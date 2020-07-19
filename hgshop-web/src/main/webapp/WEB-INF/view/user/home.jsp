@@ -7,9 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>个人中心</title>
-<link href="/resource/css/bootstrap.min.css" rel="stylesheet">
-<script type="text/javascript" src="/resource/js/jquery-3.2.1.js"></script>
-<script type="text/javascript" src="/resource/js/bootstrap.min.js"></script>
+<link href="${pageContext.request.contextPath }/resource/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="${pageContext.request.contextPath }/resource/js/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resource/js/bootstrap.min.js"></script>
 <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -27,21 +27,23 @@
       }
     </style>
     <!-- Custom styles for this template -->
-    <link href="/resource/css/dashboard.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath }/resource/css/dashboard.css" rel="stylesheet">
   <style type="text/css">/* Chart.js */
 @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}
 </style>
 </head>  
 <body>
+${name }
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
   <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Company name</a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-  <ul class="navbar-nav px-3">
-    <li class="nav-item text-nowrap">
-      <a class="nav-link" href="#">Sign out</a>
+  <input class="form-control form-control-dark w-100" type="text" placeholder="用户：1001" aria-label="${name }">
+  ${name }
+   <ul class="navbar-nav px-3">
+    <li class="nav-item text-nowrap"> 
+      
     </li>
   </ul>
 </nav>
@@ -52,12 +54,12 @@
       <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" href="javascript:void(0)" toggle-data='/user/cartList'>
+            <a class="nav-link active" href="javascript:void(0)" toggle-data='./cartList'>
               	购物
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0)" toggle-data='/user/orderlist?page=1'>
+            <a class="nav-link" href="javascript:void(0)" toggle-data='./orderlist?page=1'>
               	订单
             </a>
           </li>
@@ -98,10 +100,11 @@
           </div>
           <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-            This week
+            This week ${name }
           </button>
         </div>
-      </div>     
+      </div>
+      <div>${session.getName() }</div>     
       <div class="table-responsive" id="workContent">
       			工作内容区域
       </div>

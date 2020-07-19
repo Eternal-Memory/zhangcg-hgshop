@@ -7,9 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/resource/css/bootstrap.min.css" rel="stylesheet">
-<script type="text/javascript" src="/resource/js/jquery-3.2.1.js"></script>
-<script type="text/javascript" src="/resource/js/bootstrap.min.js"></script>
+<link href="${pageContext.request.contextPath }/resource/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="${pageContext.request.contextPath }/resource/js/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resource/js/bootstrap.min.js"></script>
 
  </head>
     <!-- Favicons -->
@@ -31,7 +31,7 @@
       }
     </style>
     <!-- Custom styles for this template -->
-    <link href="/resource/css/dashboard.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath }/resource/css/dashboard.css" rel="stylesheet">
   <style type="text/css">/* Chart.js */
 @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style></head>
   <body>
@@ -54,27 +54,27 @@
       <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" href="javascript:void(0)" toggle-data='/brand/selects'>
+            <a class="nav-link active" href="javascript:void(0)" toggle-data='./brand/selects'>
                	 品牌管理 
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0)" toggle-data='/spec/selects'>
+            <a class="nav-link" href="javascript:void(0)" toggle-data='./spec/selects'>
               	规格管理
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0)" toggle-data='/category/index'>
+            <a class="nav-link" href="javascript:void(0)" toggle-data='./category/index'>
               	分类管理
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0)" toggle-data='/spu/selects'>
+            <a class="nav-link" href="javascript:void(0)" toggle-data='./spu/selects'>
               spu管理
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0)" toggle-data='/sku/selects'>
+            <a class="nav-link" href="javascript:void(0)" toggle-data='./sku/selects'>
               sku管理
             </a>
           </li>
@@ -134,7 +134,7 @@
 	
 </body>
 <script type="text/javascript">
-    $("#workContent").load('/brand/selects');
+    $("#workContent").load('./brand/selects');
 
 	$(".nav-link").click(function(){
 		var url = $(this).attr('toggle-data');

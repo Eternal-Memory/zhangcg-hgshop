@@ -7,9 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>商品详情</title>
-<link href="/resource/css/bootstrap.min.css" rel="stylesheet">
-<script type="text/javascript" src="/resource/js/jquery-3.2.1.js"></script>
-<script type="text/javascript" src="/resource/js/bootstrap.min.js"></script>
+<link href="${pageContext.request.contextPath }/resource/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="${pageContext.request.contextPath }/resource/js/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resource/js/bootstrap.min.js"></script>
 <style type="text/css">
 /* 没有选中 */
 .skuNoSel {
@@ -113,7 +113,7 @@
 			}
 			
 			var buyNum=parseInt($("#buyNum").val());
-			$.post("/user/insertCart",{skuid:gSkuid,pnum:buyNum},function(msg){
+			$.post("./insertCart",{skuid:gSkuid,pnum:buyNum},function(msg){
 				if(msg.errorCode===0){
 					alert("添加购物车成功");
 				}else{

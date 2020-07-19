@@ -40,7 +40,7 @@
     <link href="${pageContext.request.contextPath}/resource/css/floating-labels.css" rel="stylesheet">
   </head>
   <body>
-    <form class="form-signin" action="/user/insert" method="post" id="registerForm">
+    <form class="form-signin" action="./insert" method="post" id="registerForm">
   <div class="text-center mb-4">
     <img class="mb-4" src="/resource/img/logo.jpg" alt="" width="108" height="72">
     <h1 class="h3 mb-3 font-weight-normal">豪哥商城欢迎您</h1>
@@ -52,8 +52,8 @@
   </div>
 
   <div class="form-label-group">
-    <input type="password" id="inputPassword" class="form-control" name="password" placeholder="密码" required="">
-    <label for="inputPassword">密码</label>
+    <input type="password" id="password" class="form-control" name="password" placeholder="密码" required="">
+    <label for="password">密码</label>
   </div>
    <div class="form-label-group">
     <input type="password" id="repassword" class="form-control" name="repassword" placeholder="密码" required="">
@@ -73,7 +73,7 @@
  		},
  		rules:{
  			username:{
- 				remote:'/user/checkExist',
+ 				remote:'./checkExist',
  				required:true,
  				minlength:3
  			},
@@ -81,7 +81,7 @@
  				minlength:4
  			},
  			repassword:{
- 				equalTo:"#password"
+ 				equalTo:'#password'
  			}
  		},
  		messages:{

@@ -13,9 +13,9 @@
 	href="${pageContext.request.contextPath}/resource/css/floating-labels.css"
 	rel="stylesheet">
 
-<link href="/resource/css/bootstrap.min.css" rel="stylesheet">
-<script type="text/javascript" src="/resource/js/jquery-3.2.1.js"></script>
-<script type="text/javascript" src="/resource/js/bootstrap.min.js"></script>
+<link href="${pageContext.request.contextPath }/resource/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="${pageContext.request.contextPath }/resource/js/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resource/js/bootstrap.min.js"></script>
 <style>
 .bd-placeholder-img {
 	font-size: 1.125rem;
@@ -34,7 +34,7 @@
 </style>
 </head>
 <body>
-	<form class="form-signin" action="/user/login" method="post">
+	<form class="form-signin" action="./login" method="post">
 		<div class="text-center mb-4">
 			<img class="mb-4" src="/resource/img/logo.jpg" alt="" width="108"
 				height="72">

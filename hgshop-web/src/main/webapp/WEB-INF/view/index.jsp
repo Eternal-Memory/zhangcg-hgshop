@@ -7,12 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>商品浏览</title>
-<link href="/resource/css/bootstrap.min.css" rel="stylesheet">
-<link href="/resource/bootstrap4/css/bootstrap.css" rel="stylesheet" >
-<link href="/resource/bootstrap-treeview/css/bootstrap-treeview.css" rel="stylesheet">
-<script type="text/javascript" src="/resource/js/jquery-3.2.1.js"></script>
-<script type="text/javascript" src="/resource/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/resource/bootstrap-treeview/js/bootstrap-treeview.js"></script>
+<link href="${pageContext.request.contextPath }/resource/css/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resource/bootstrap4/css/bootstrap.css" rel="stylesheet" >
+<link href="${pageContext.request.contextPath }/resource/bootstrap-treeview/css/bootstrap-treeview.css" rel="stylesheet">
+<script type="text/javascript" src="${pageContext.request.contextPath }/resource/js/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resource/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resource/bootstrap-treeview/js/bootstrap-treeview.js"></script>
 <style type="text/css">
 	.p1 {
 		display: -webkit-box;

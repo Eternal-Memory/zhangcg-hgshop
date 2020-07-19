@@ -7,9 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/resource/css/bootstrap.min.css" rel="stylesheet">
-<script type="text/javascript" src="/resource/js/jquery-3.2.1.js"></script>
-<script type="text/javascript" src="/resource/js/bootstrap.min.js"></script>
+<link href="${pageContext.request.contextPath }/resource/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="${pageContext.request.contextPath }/resource/js/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resource/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="container-fluid">
@@ -60,11 +60,11 @@
 	//删除
 	function del(id){
 		if(confirm('确认删除吗？')){
-			$.post('/user/deleteCart',{ids:id},function(msg){
+			$.post('./deleteCart',{ids:id},function(msg){
 				if(Number(msg)>0){
 					alert('删除成功')
 					//刷新
-					$("#workContent").load('/user/cartList');
+					$("#workContent").load('./user/cartList');
 				}else{
 					alert('删除失败')
 				}
@@ -77,11 +77,11 @@
 			return $(this).val();
 		}).get().join();
 		if(confirm('确认全部删除吗？')){
-			$.post('/user/deleteCart',{ids:ids},function(msg){
+			$.post('./deleteCart',{ids:ids},function(msg){
 				if(Number(msg)>0){
 					alert('删除成功')
 					//刷新
-					$("#workContent").load('/user/catList');
+					$("#workContent").load('./user/catList');
 				}else{
 					alert('删除失败')
 				}
@@ -99,11 +99,11 @@
 		}
 		alert($("#address").val());
 		// 生成订单
-		$.post("/user/createOrder",{cartIds:ids,address:$("#address").val()},function(msg){
+		$.post("./createOrder",{cartIds:ids,address:$("#address").val()},function(msg){
 			if(msg.errorCode===0){
 				alert('购物成功，请及时支付')
 				//刷新
-				$("#workContent").load('/user/catList');
+				$("#workContent").load('./catList');
 			}else{
 				alert(data.errorInfo)
 			}

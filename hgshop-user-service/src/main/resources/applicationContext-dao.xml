@@ -35,7 +35,7 @@
 		<!-- 注入数据源 -->
 		<property name="dataSource" ref="dataSource" />
 		<!-- 关联mybatis配置文件 -->
-		<property name="configLocation" value="classpath:mybatis.xml" />
+		<property name="configLocation" value="classpath:MyBatis.xml" />
 		<!-- mapper加载的位置   -->
 		<property name="mapperLocations" value="classpath:mappers/*" />
 		<!-- 必须修改 xxxxxx-->
